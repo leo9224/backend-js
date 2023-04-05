@@ -11,7 +11,7 @@
     "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "test": "npm run docker:up && npx prisma migrate && dotenv -e .env.test -- jest -i --coverage && npm run docker:down"
+    "test": "npm run docker:up && dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test -- jest -i --coverage && npm run docker:down"
   },
   "author": "",
   "license": "ISC",

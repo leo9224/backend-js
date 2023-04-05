@@ -1,8 +1,34 @@
 import {ContactService} from "../services/ContactService";
 import {Contact} from "../models/Contact";
+import {PrismaClient} from "@prisma/client";
 
 let contact1: Contact
 let contact2: Contact
+
+beforeAll(async () => {
+    const prisma_client = new PrismaClient()
+
+    await prisma_client.civilite.create({
+        data: {
+            id_civilite: 1,
+            libelle: "Mr"
+        }
+    })
+
+    await prisma_client.civilite.create({
+        data: {
+            id_civilite: 2,
+            libelle: "Mme"
+        }
+    })
+
+    await prisma_client.civilite.create({
+        data: {
+            id_civilite: 3,
+            libelle: "Mlle"
+        }
+    })
+});
 
 beforeEach(async () => {
     contact1 = new Contact(1, "DUPONT", "Jean", "dupontj@3il.fr", 1)
