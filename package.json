@@ -9,7 +9,9 @@
     "build": "tsup index.ts --format cjs --clean",
     "start": "npm run build && node dist/index.cjs",
     "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev",
-    "test": "dotenv -e .env.test -- jest -i --coverage"
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "test": "npm run docker:up && npx prisma migrate && dotenv -e .env.test -- jest -i --coverage && npm run docker:down"
   },
   "author": "",
   "license": "ISC",
