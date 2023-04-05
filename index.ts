@@ -7,6 +7,8 @@ import {CiviliteService} from "./services/CiviliteService";
 const app = express()
 const port = 3000
 
+app.disable("x-powered-by");
+
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended: true}))
 
