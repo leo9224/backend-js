@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model civilite {
+  id_civilite Int       @id(map: "civilite_pk")
+  libelle     String    @db.VarChar(10)
+  contact     contact[]
+}
+
+model contact {
+  id_contact  Int      @id(map: "contact_pk")
+  nom         String   @db.VarChar(50)
+  prenom      String   @db.VarChar(50)
+  id_civilite Int
+  email       String   @db.VarChar(255)
+  civilite    civilite @relation(fields: [id_civilite], references: [id_civilite], onDelete: NoAction, onUpdate: NoAction, map: "contact_civilite_fk")
+}
