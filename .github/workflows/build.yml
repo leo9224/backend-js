@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install node 18.16.0
-        run: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash && nvm install 18.16.0 && nvm use 18.16.0
+        run: nvm ls && nvm install 18.16.0 && nvm use 18.16.0
       - name: Install dependencies
         run: npm install
       - name: Test and coverage
