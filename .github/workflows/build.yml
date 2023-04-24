@@ -16,7 +16,7 @@ jobs:
       - name: Install node 18.16.0
         run: export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" && nvm install 18.16.0 && nvm use 18.16.0
       - name: Install dependencies
-        run: npm install
+        run: npm --version && npm install
       - name: Test and coverage
         run: npm test
       - name: SonarCloud Scan
