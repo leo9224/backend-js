@@ -5,7 +5,7 @@ import {ContactService} from "./services/ContactService";
 import {CiviliteService} from "./services/CiviliteService";
 
 const app = express()
-const port = 3000
+const port = process.env.API_PORT
 
 app.disable("x-powered-by");
 
@@ -54,6 +54,8 @@ app.get('/civilites', async (request, response) => {
     response.send(await CiviliteService.findAll())
 })
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`API listening on port ${port}`)
 })
+
+export default server

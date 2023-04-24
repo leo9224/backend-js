@@ -1,4 +1,21 @@
 "use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -19,6 +36,13 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
+
+// index.ts
+var ProjetB3_exports = {};
+__export(ProjetB3_exports, {
+  default: () => ProjetB3_default
+});
+module.exports = __toCommonJS(ProjetB3_exports);
 
 // models/Contact.ts
 var Contact = class {
@@ -173,7 +197,8 @@ var CiviliteService = class {
 var express = require("express");
 var body_parser = require("body-parser");
 var app = express();
-var port = 3e3;
+var port = process.env.API_PORT;
+app.disable("x-powered-by");
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 app.get("/contacts", (request, response) => __async(void 0, null, function* () {
@@ -208,3 +233,4 @@ app.get("/civilites", (request, response) => __async(void 0, null, function* () 
 app.listen(port, () => {
   console.log(`API listening on port ${port}`);
 });
+var ProjetB3_default = app;

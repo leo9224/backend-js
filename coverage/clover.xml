@@ -1,91 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680700341450" clover="3.2.0">
-  <project timestamp="1680700341450" name="All files">
-    <metrics statements="59" coveredstatements="59" conditionals="2" coveredconditionals="2" methods="14" coveredmethods="14" elements="75" coveredelements="75" complexity="0" loc="59" ncloc="59" packages="3" files="6" classes="6"/>
-    <package name="models">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="Civilite.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Civilite.ts">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="7" count="6" type="stmt"/>
-      </file>
-      <file name="Contact.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Contact.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="17" type="stmt"/>
-        <line num="10" count="17" type="stmt"/>
-        <line num="11" count="17" type="stmt"/>
-        <line num="12" count="17" type="stmt"/>
-        <line num="13" count="17" type="stmt"/>
-      </file>
-    </package>
-    <package name="repositories">
-      <metrics statements="37" coveredstatements="37" conditionals="1" coveredconditionals="1" methods="6" coveredmethods="6"/>
-      <file name="CiviliteDao.ts" path="C:\Users\leofe\Documents\ProjetB3\repositories\CiviliteDao.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+<coverage generated="1680705887798" clover="3.2.0">
+  <project timestamp="1680705887798" name="All files">
+    <metrics statements="95" coveredstatements="88" conditionals="2" coveredconditionals="2" methods="27" coveredmethods="25" elements="124" coveredelements="115" complexity="0" loc="95" ncloc="95" packages="4" files="7" classes="7"/>
+    <package name="ProjetB3">
+      <metrics statements="36" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
+      <file name="index.ts" path="C:\Users\leofe\Documents\ProjetB3\index.ts">
+        <metrics statements="36" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="ProjetB3.models">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="Civilite.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Civilite.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
+      </file>
+      <file name="Contact.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Contact.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="9" count="40" type="stmt"/>
+        <line num="10" count="40" type="stmt"/>
+        <line num="11" count="40" type="stmt"/>
+        <line num="12" count="40" type="stmt"/>
+        <line num="13" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="ProjetB3.repositories">
+      <metrics statements="37" coveredstatements="37" conditionals="1" coveredconditionals="1" methods="6" coveredmethods="6"/>
+      <file name="CiviliteDao.ts" path="C:\Users\leofe\Documents\ProjetB3\repositories\CiviliteDao.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
       </file>
       <file name="ContactDao.ts" path="C:\Users\leofe\Documents\ProjetB3\repositories\ContactDao.ts">
         <metrics statements="26" coveredstatements="26" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="20" count="6" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="36" count="3" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
-        <line num="45" count="10" type="stmt"/>
-        <line num="51" count="10" type="cond" truecount="1" falsecount="0"/>
-        <line num="52" count="8" type="stmt"/>
-        <line num="53" count="8" type="stmt"/>
-        <line num="54" count="8" type="stmt"/>
-        <line num="55" count="8" type="stmt"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="58" count="8" type="stmt"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="16" type="stmt"/>
+        <line num="20" count="16" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="45" count="22" type="stmt"/>
+        <line num="51" count="22" type="cond" truecount="1" falsecount="0"/>
+        <line num="52" count="19" type="stmt"/>
+        <line num="53" count="19" type="stmt"/>
+        <line num="54" count="19" type="stmt"/>
+        <line num="55" count="19" type="stmt"/>
+        <line num="56" count="19" type="stmt"/>
+        <line num="58" count="19" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="services">
+    <package name="ProjetB3.services">
       <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="6" coveredmethods="6"/>
       <file name="CiviliteService.ts" path="C:\Users\leofe\Documents\ProjetB3\services\CiviliteService.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
       </file>
       <file name="ContactService.ts" path="C:\Users\leofe\Documents\ProjetB3\services\ContactService.ts">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
-        <line num="16" count="7" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="21" count="10" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="16" type="stmt"/>
+        <line num="16" count="18" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="16" type="stmt"/>
+        <line num="21" count="22" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
       </file>
     </package>
   </project>

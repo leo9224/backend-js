@@ -1,6 +1,9 @@
-import {ContactService} from "../services/ContactService";
+import request from "supertest";
 import {Contact} from "../models/Contact";
+import {ContactService} from "../services/ContactService";
+import server from "../index";
 import {PrismaClient} from "@prisma/client";
+import {Civilite} from "../models/Civilite";
 
 let contact1: Contact
 let contact2: Contact
@@ -65,19 +68,37 @@ afterEach(async () => {
     await ContactService.delete(2)
 });
 
-test('get contacts', async () => {
-    expect(await ContactService.findById(1)).toEqual(contact1);
-    expect(await ContactService.findAll()).toEqual([contact1, contact2])
+test("get one contact", async () => {
+    const response = await request(server).get("/contacts/1");
+    expect(response.body).toEqual(contact1);
+    expect(response.status).toEqual(200)
+    server.close()
 });
 
-test('update contact', async () => {
-    await ContactService.update(2, {id_civilite: 1})
-    contact2.id_civilite = 1
-    expect(await ContactService.findById(2)).toEqual(contact2);
+test("get all contact", async () => {
+    const response = await request(server).get("/contacts");
+    expect(response.body).toEqual([contact1, contact2]);
+    expect(response.status).toEqual(200)
+    server.close()
 });
 
-test('delete contact', async () => {
-    await ContactService.delete(1)
-    expect(await ContactService.findById(1)).toEqual(null);
-    expect(await ContactService.findAll()).toEqual([contact2])
+test("update contact", async () => {
+    const response = await request(server).put("/contacts/1");
+    expect(response.text).toEqual("Contact updated");
+    expect(response.status).toEqual(200)
+    server.close()
+});
+
+test("delete contact", async () => {
+    const response = await request(server).delete("/contacts/1");
+    expect(response.text).toEqual("Contact deleted");
+    expect(response.status).toEqual(200)
+    server.close()
+});
+
+test("get all civilites", async () => {
+    const response = await request(server).get("/civilites");
+    expect(response.body).toEqual([new Civilite(1, "Mr"), new Civilite(2, "Mme"), new Civilite(3, "Mlle")]);
+    expect(response.status).toEqual(200)
+    server.close()
 });
