@@ -37,7 +37,7 @@ app.post('/contact', async (request, response) => {
     const email = request.body.email
     const id_civilite = request.body.id_civilite
 
-    await ContactService.create(new Contact(id_contact, nom, prenom, email, id_civilite!))
+    await ContactService.create(new Contact(id_contact, nom, prenom, email, id_civilite))
 
     response.send("Contact created")
 })

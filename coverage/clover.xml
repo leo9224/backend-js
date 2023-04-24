@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682319853257" clover="3.2.0">
-  <project timestamp="1682319853257" name="All files">
-    <metrics statements="95" coveredstatements="88" conditionals="2" coveredconditionals="2" methods="27" coveredmethods="25" elements="124" coveredelements="115" complexity="0" loc="95" ncloc="95" packages="4" files="7" classes="7"/>
+<coverage generated="1682326564549" clover="3.2.0">
+  <project timestamp="1682326564549" name="All files">
+    <metrics statements="95" coveredstatements="95" conditionals="2" coveredconditionals="2" methods="27" coveredmethods="27" elements="124" coveredelements="124" complexity="0" loc="95" ncloc="95" packages="4" files="7" classes="7"/>
     <package name="ProjetB3">
-      <metrics statements="36" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
+      <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="13"/>
       <file name="index.ts" path="C:\Users\leofe\Documents\ProjetB3\index.ts">
-        <metrics statements="36" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
+        <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="13"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -26,13 +26,13 @@
         <line num="28" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
@@ -55,11 +55,11 @@
       <file name="Contact.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Contact.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="9" count="40" type="stmt"/>
-        <line num="10" count="40" type="stmt"/>
-        <line num="11" count="40" type="stmt"/>
-        <line num="12" count="40" type="stmt"/>
-        <line num="13" count="40" type="stmt"/>
+        <line num="9" count="45" type="stmt"/>
+        <line num="10" count="45" type="stmt"/>
+        <line num="11" count="45" type="stmt"/>
+        <line num="12" count="45" type="stmt"/>
+        <line num="13" count="45" type="stmt"/>
       </file>
     </package>
     <package name="ProjetB3.repositories">
@@ -84,28 +84,28 @@
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="8" count="16" type="stmt"/>
-        <line num="20" count="16" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
-        <line num="29" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="32" count="5" type="stmt"/>
+        <line num="8" count="19" type="stmt"/>
+        <line num="20" count="18" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
         <line num="33" count="5" type="stmt"/>
         <line num="34" count="5" type="stmt"/>
         <line num="35" count="5" type="stmt"/>
         <line num="36" count="5" type="stmt"/>
-        <line num="38" count="5" type="stmt"/>
-        <line num="41" count="3" type="stmt"/>
-        <line num="45" count="22" type="stmt"/>
-        <line num="51" count="22" type="cond" truecount="1" falsecount="0"/>
-        <line num="52" count="19" type="stmt"/>
-        <line num="53" count="19" type="stmt"/>
-        <line num="54" count="19" type="stmt"/>
-        <line num="55" count="19" type="stmt"/>
-        <line num="56" count="19" type="stmt"/>
-        <line num="58" count="19" type="stmt"/>
-        <line num="61" count="3" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="46" count="24" type="stmt"/>
+        <line num="52" count="24" type="cond" truecount="1" falsecount="0"/>
+        <line num="53" count="21" type="stmt"/>
+        <line num="54" count="21" type="stmt"/>
+        <line num="55" count="21" type="stmt"/>
+        <line num="56" count="21" type="stmt"/>
+        <line num="57" count="21" type="stmt"/>
+        <line num="59" count="21" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
       </file>
     </package>
     <package name="ProjetB3.services">
@@ -123,10 +123,10 @@
         <line num="4" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="12" count="16" type="stmt"/>
-        <line num="16" count="18" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="16" type="stmt"/>
-        <line num="21" count="22" type="stmt"/>
+        <line num="12" count="19" type="stmt"/>
+        <line num="16" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="18" type="stmt"/>
+        <line num="21" count="24" type="stmt"/>
         <line num="25" count="2" type="stmt"/>
       </file>
     </package>

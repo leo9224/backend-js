@@ -134,14 +134,15 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,7 +154,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,20 +180,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -208,73 +210,74 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Contact} from "../models/Contact";
 import {PrismaClient} from "@prisma/client";
 &nbsp;
-const prisma_client=new PrismaClient()
+const prisma_client = new PrismaClient()
 &nbsp;
-export class ContactDao{
-    async create(contact:Contact) {
+export class ContactDao {
+    async create(contact: Contact) {
         await prisma_client.contact.create({
-        data: {
-            id_contact: contact.id,
-            nom: contact.nom,
-            prenom: contact.prenom,
-            id_civilite: contact.id_civilite,
-            email: contact.email
-        }
-    })
+            data: {
+                id_contact: contact.id,
+                nom: contact.nom,
+                prenom: contact.prenom,
+                id_civilite: contact.id_civilite,
+                email: contact.email
+            }
+        })
     }
 &nbsp;
     async delete(id: number) {
         await prisma_client.contact.delete({
-        where: {
-            id_contact: id,
-        }})
-    }
-&nbsp;
-    async findAll() {
-        let contacts:Contact[]=[]
-&nbsp;
-        const contacts_json=await prisma_client.contact.findMany()
-&nbsp;
-        for (let contact_json of contacts_json){
-            const id_contact=contact_json['id_contact']
-            const nom=contact_json['nom']
-            const prenom=contact_json['prenom']
-            const email=contact_json['email']
-            const id_civilite=contact_json['id_civilite']
-&nbsp;
-            contacts.push(new Contact(id_contact,nom,prenom,email,id_civilite!))
-        }
-&nbsp;
-        return contacts;
-    }
-&nbsp;
-    async findById(id: number){
-        const contact_json=await prisma_client.contact.findUnique({
             where: {
                 id_contact: id,
             }
         })
+    }
 &nbsp;
-        if (contact_json!==null) {
+    async findAll() {
+        let contacts: Contact[] = []
+&nbsp;
+        const contacts_json = await prisma_client.contact.findMany()
+&nbsp;
+        for (let contact_json of contacts_json) {
             const id_contact = contact_json['id_contact']
             const nom = contact_json['nom']
             const prenom = contact_json['prenom']
             const email = contact_json['email']
             const id_civilite = contact_json['id_civilite']
 &nbsp;
-            return new Contact(id_contact, nom, prenom, email, id_civilite!);
+            contacts.push(new Contact(id_contact, nom, prenom, email, id_civilite))
+        }
+&nbsp;
+        return contacts;
+    }
+&nbsp;
+    async findById(id: number) {
+        const contact_json = await prisma_client.contact.findUnique({
+            where: {
+                id_contact: id,
+            }
+        })
+&nbsp;
+        if (contact_json !== null) {
+            const id_contact = contact_json['id_contact']
+            const nom = contact_json['nom']
+            const prenom = contact_json['prenom']
+            const email = contact_json['email']
+            const id_civilite = contact_json['id_civilite']
+&nbsp;
+            return new Contact(id_contact, nom, prenom, email, id_civilite);
         }
 &nbsp;
         return null
     }
 &nbsp;
-    async update(id: number,body:any) {
+    async update(id: number, body: any) {
         await prisma_client.contact.update({
-        where: {
-            id_contact: id,
-        },
-        data: body,
-    })
+            where: {
+                id_contact: id,
+            },
+            data: body,
+        })
     }
 }</pre></td></tr></table></pre>
 
@@ -283,7 +286,7 @@ export class ContactDao{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-24T07:04:13.236Z
+                at 2023-04-24T08:56:04.529Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

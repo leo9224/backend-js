@@ -36,6 +36,12 @@ beforeAll(async () => {
 afterAll(async () => {
     const prisma_client = new PrismaClient()
 
+    await prisma_client.contact.delete({
+        where: {
+            id_contact: 5
+        }
+    })
+
     await prisma_client.civilite.delete({
         where: {
             id_civilite: 1
@@ -92,6 +98,19 @@ test("update contact", async () => {
 test("delete contact", async () => {
     const response = await request(server).delete("/contacts/1");
     expect(response.text).toEqual("Contact deleted");
+    expect(response.status).toEqual(200)
+    server.close()
+});
+
+test("create contact", async () => {
+    const response = await request(server).post("/contact").send({
+        id_contact: 5,
+        nom: "FETTER",
+        prenom: "Léo",
+        email: "fetterl@3il.fr",
+        id_civilite: 1
+    });
+    expect(response.text).toEqual("Contact created");
     expect(response.status).toEqual(200)
     server.close()
 });
