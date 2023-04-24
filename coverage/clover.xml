@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680705887798" clover="3.2.0">
-  <project timestamp="1680705887798" name="All files">
+<coverage generated="1682319140315" clover="3.2.0">
+  <project timestamp="1682319140315" name="All files">
     <metrics statements="95" coveredstatements="88" conditionals="2" coveredconditionals="2" methods="27" coveredmethods="25" elements="124" coveredelements="115" complexity="0" loc="95" ncloc="95" packages="4" files="7" classes="7"/>
     <package name="ProjetB3">
       <metrics statements="36" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
@@ -49,8 +49,8 @@
       <file name="Civilite.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Civilite.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="6" count="9" type="stmt"/>
-        <line num="7" count="9" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
       </file>
       <file name="Contact.ts" path="C:\Users\leofe\Documents\ProjetB3\models\Contact.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -73,9 +73,9 @@
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
       </file>
       <file name="ContactDao.ts" path="C:\Users\leofe\Documents\ProjetB3\repositories\ContactDao.ts">
