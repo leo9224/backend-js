@@ -1,62 +1,24 @@
 import {Civilite} from "../models/Civilite";
 import {CiviliteService} from "../services/CiviliteService";
-import {PrismaClient} from "@prisma/client";
 
 let civilite1: Civilite
 let civilite2: Civilite
 let civilite3: Civilite
 
-const prisma_client = new PrismaClient()
-
-beforeAll(async () => {
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 1,
-            libelle: "Mr"
-        }
-    })
-
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 2,
-            libelle: "Mme"
-        }
-    })
-
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 3,
-            libelle: "Mlle"
-        }
-    })
-})
-
-afterAll(async () => {
-    const prisma_client = new PrismaClient()
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 1
-        }
-    })
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 2
-        }
-    })
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 3
-        }
-    })
-});
-
-beforeEach(() => {
+beforeEach(async () => {
     civilite1 = new Civilite(1, "Mr")
     civilite2 = new Civilite(2, "Mme")
     civilite3 = new Civilite(3, "Mlle")
+
+    await CiviliteService.create(civilite1)
+    await CiviliteService.create(civilite2)
+    await CiviliteService.create(civilite3)
+});
+
+afterEach(async () => {
+    await CiviliteService.delete(1)
+    await CiviliteService.delete(2)
+    await CiviliteService.delete(3)
 });
 
 test('get civilites', async () => {
