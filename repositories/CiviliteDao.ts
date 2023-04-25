@@ -1,6 +1,5 @@
 import {Civilite} from "../models/Civilite";
 import {PrismaClient} from "@prisma/client";
-import {Contact} from "../models/Contact";
 
 const prisma_client = new PrismaClient()
 

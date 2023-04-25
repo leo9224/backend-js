@@ -1,5 +1,4 @@
 import {CiviliteDao} from "../repositories/CiviliteDao";
-import {Contact} from "../models/Contact";
 import {Civilite} from "../models/Civilite";
 
 const civilite_dao = new CiviliteDao()
