@@ -144,7 +144,7 @@ test("update civilite", async () => {
 });
 
 test("delete civilite", async () => {
-    const response = await request(server).delete("/civilites/1");
+    const response = await request(server).delete("/civilites/3");
     expect(response.text).toEqual("Civilite deleted");
     expect(response.status).toEqual(200)
     server.close()
