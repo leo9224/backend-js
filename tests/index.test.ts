@@ -2,67 +2,15 @@ import request from "supertest";
 import {Contact} from "../models/Contact";
 import {ContactService} from "../services/ContactService";
 import server from "../index";
-import {PrismaClient} from "@prisma/client";
 import {Civilite} from "../models/Civilite";
+import {CiviliteService} from "../services/CiviliteService";
 
 let contact1: Contact
 let contact2: Contact
+
 let civilite1: Civilite
 let civilite2: Civilite
 let civilite3: Civilite
-
-beforeAll(async () => {
-    const prisma_client = new PrismaClient()
-
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 1,
-            libelle: "Mr"
-        }
-    })
-
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 2,
-            libelle: "Mme"
-        }
-    })
-
-    await prisma_client.civilite.create({
-        data: {
-            id_civilite: 3,
-            libelle: "Mlle"
-        }
-    })
-});
-
-afterAll(async () => {
-    const prisma_client = new PrismaClient()
-
-    await prisma_client.contact.delete({
-        where: {
-            id_contact: 5
-        }
-    })
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 1
-        }
-    })
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 2
-        }
-    })
-
-    await prisma_client.civilite.delete({
-        where: {
-            id_civilite: 3
-        }
-    })
-});
 
 beforeEach(async () => {
     contact1 = new Contact(1, "DUPONT", "Jean", "dupontj@3il.fr", 1)
@@ -72,6 +20,10 @@ beforeEach(async () => {
     civilite2 = new Civilite(2, "Mme")
     civilite3 = new Civilite(3, "Mlle")
 
+    await CiviliteService.create(civilite1)
+    await CiviliteService.create(civilite2)
+    await CiviliteService.create(civilite3)
+
     await ContactService.create(contact1)
     await ContactService.create(contact2)
 });
@@ -79,6 +31,10 @@ beforeEach(async () => {
 afterEach(async () => {
     await ContactService.delete(1)
     await ContactService.delete(2)
+
+    await CiviliteService.delete(1)
+    await CiviliteService.delete(2)
+    await CiviliteService.delete(3)
 });
 
 test("get one contact", async () => {
