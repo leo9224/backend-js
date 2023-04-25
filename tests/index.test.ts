@@ -75,6 +75,9 @@ test("create contact", async () => {
     });
     expect(response.text).toEqual("Contact created");
     expect(response.status).toEqual(200)
+
+    await ContactService.delete(5)
+    
     server.close()
 });
 
