@@ -8,9 +8,12 @@ import {Civilite} from "./models/Civilite";
 const app = express()
 const port = process.env.API_PORT
 const cors = require('cors');
+let corsOptions = {
+    origin: 'http://localhost:3001' // Compliant
+};
 
 app.disable("x-powered-by");
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended: true}))

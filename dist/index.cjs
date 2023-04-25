@@ -264,8 +264,12 @@ var body_parser = require("body-parser");
 var app = express();
 var port = process.env.API_PORT;
 var cors = require("cors");
+var corsOptions = {
+  origin: "http://localhost:3001"
+  // Compliant
+};
 app.disable("x-powered-by");
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 app.get("/contacts", (request, response) => __async(void 0, null, function* () {
