@@ -38,11 +38,11 @@ var __async = (__this, __arguments, generator) => {
 };
 
 // index.ts
-var ProjetB3_exports = {};
-__export(ProjetB3_exports, {
-  default: () => ProjetB3_default
+var backend3il_exports = {};
+__export(backend3il_exports, {
+  default: () => backend3il_default
 });
-module.exports = __toCommonJS(ProjetB3_exports);
+module.exports = __toCommonJS(backend3il_exports);
 
 // models/Contact.ts
 var Contact = class {
@@ -59,28 +59,6 @@ var Contact = class {
 var import_client = require("@prisma/client");
 var prisma_client = new import_client.PrismaClient();
 var ContactDao = class {
-  create(contact) {
-    return __async(this, null, function* () {
-      yield prisma_client.contact.create({
-        data: {
-          id_contact: contact.id,
-          nom: contact.nom,
-          prenom: contact.prenom,
-          id_civilite: contact.id_civilite,
-          email: contact.email
-        }
-      });
-    });
-  }
-  delete(id) {
-    return __async(this, null, function* () {
-      yield prisma_client.contact.delete({
-        where: {
-          id_contact: id
-        }
-      });
-    });
-  }
   findAll() {
     return __async(this, null, function* () {
       let contacts = [];
@@ -114,6 +92,28 @@ var ContactDao = class {
       return null;
     });
   }
+  create(contact) {
+    return __async(this, null, function* () {
+      yield prisma_client.contact.create({
+        data: {
+          id_contact: contact.id,
+          nom: contact.nom,
+          prenom: contact.prenom,
+          id_civilite: contact.id_civilite,
+          email: contact.email
+        }
+      });
+    });
+  }
+  delete(id) {
+    return __async(this, null, function* () {
+      yield prisma_client.contact.delete({
+        where: {
+          id_contact: id
+        }
+      });
+    });
+  }
   update(id, body) {
     return __async(this, null, function* () {
       yield prisma_client.contact.update({
@@ -134,6 +134,11 @@ var ContactService = class {
       return yield contact_dao.findAll();
     });
   }
+  static findById(id) {
+    return __async(this, null, function* () {
+      return yield contact_dao.findById(id);
+    });
+  }
   static create(contact) {
     return __async(this, null, function* () {
       yield contact_dao.create(contact);
@@ -143,11 +148,6 @@ var ContactService = class {
     return __async(this, null, function* () {
       if ((yield this.findById(id)) !== null)
         yield contact_dao.delete(id);
-    });
-  }
-  static findById(id) {
-    return __async(this, null, function* () {
-      return yield contact_dao.findById(id);
     });
   }
   static update(id, body) {
@@ -181,6 +181,50 @@ var CiviliteDao = class {
       return civilites;
     });
   }
+  findById(id) {
+    return __async(this, null, function* () {
+      const civilite_json = yield prisma_client2.civilite.findUnique({
+        where: {
+          id_civilite: id
+        }
+      });
+      if (civilite_json !== null) {
+        const id_civilite = civilite_json["id_civilite"];
+        const libelle = civilite_json["libelle"];
+        return new Civilite(id_civilite, libelle);
+      }
+      return null;
+    });
+  }
+  create(civilite) {
+    return __async(this, null, function* () {
+      yield prisma_client2.civilite.create({
+        data: {
+          id_civilite: civilite.id,
+          libelle: civilite.libelle
+        }
+      });
+    });
+  }
+  delete(id) {
+    return __async(this, null, function* () {
+      yield prisma_client2.civilite.delete({
+        where: {
+          id_civilite: id
+        }
+      });
+    });
+  }
+  update(id, body) {
+    return __async(this, null, function* () {
+      yield prisma_client2.civilite.update({
+        where: {
+          id_civilite: id
+        },
+        data: body
+      });
+    });
+  }
 };
 
 // services/CiviliteService.ts
@@ -191,6 +235,27 @@ var CiviliteService = class {
       return yield civilite_dao.findAll();
     });
   }
+  static findById(id) {
+    return __async(this, null, function* () {
+      return yield civilite_dao.findById(id);
+    });
+  }
+  static create(civilite) {
+    return __async(this, null, function* () {
+      yield civilite_dao.create(civilite);
+    });
+  }
+  static delete(id) {
+    return __async(this, null, function* () {
+      if ((yield this.findById(id)) !== null)
+        yield civilite_dao.delete(id);
+    });
+  }
+  static update(id, body) {
+    return __async(this, null, function* () {
+      yield civilite_dao.update(id, body);
+    });
+  }
 };
 
 // index.ts
@@ -198,7 +263,9 @@ var express = require("express");
 var body_parser = require("body-parser");
 var app = express();
 var port = process.env.API_PORT;
+var cors = require("cors");
 app.disable("x-powered-by");
+app.use(cors());
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 app.get("/contacts", (request, response) => __async(void 0, null, function* () {
@@ -230,7 +297,27 @@ app.delete("/contacts/:id", (request, response) => __async(void 0, null, functio
 app.get("/civilites", (request, response) => __async(void 0, null, function* () {
   response.send(yield CiviliteService.findAll());
 }));
-app.listen(port, () => {
+app.get("/civilites/:id", (request, response) => __async(void 0, null, function* () {
+  const civilite_id = parseInt(request.params.id);
+  response.send(yield CiviliteService.findById(civilite_id));
+}));
+app.put("/civilites/:id", (request, response) => __async(void 0, null, function* () {
+  const civilite_id = parseInt(request.params.id);
+  yield CiviliteService.update(civilite_id, request.body);
+  response.send("Civilite updated");
+}));
+app.post("/civilite", (request, response) => __async(void 0, null, function* () {
+  const id_civilite = request.body.id_civilite;
+  const libelle = request.body.libelle;
+  yield CiviliteService.create(new Civilite(id_civilite, libelle));
+  response.send("Civilite created");
+}));
+app.delete("/civilites/:id", (request, response) => __async(void 0, null, function* () {
+  const civilite_id = parseInt(request.params.id);
+  yield CiviliteService.delete(civilite_id);
+  response.send("Civilite deleted");
+}));
+var server = app.listen(port, () => {
   console.log(`API listening on port ${port}`);
 });
-var ProjetB3_default = app;
+var backend3il_default = server;

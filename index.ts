@@ -3,11 +3,14 @@ import body_parser = require('body-parser')
 import {Contact} from "./models/Contact";
 import {ContactService} from "./services/ContactService";
 import {CiviliteService} from "./services/CiviliteService";
+import {Civilite} from "./models/Civilite";
 
 const app = express()
 const port = process.env.API_PORT
+const cors = require('cors');
 
 app.disable("x-powered-by");
+app.use(cors())
 
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended: true}))
@@ -52,6 +55,37 @@ app.delete('/contacts/:id', async (request, response) => {
 
 app.get('/civilites', async (request, response) => {
     response.send(await CiviliteService.findAll())
+})
+
+app.get('/civilites/:id', async (request, response) => {
+    const civilite_id = parseInt(request.params.id);
+
+    response.send(await CiviliteService.findById(civilite_id))
+})
+
+app.put('/civilites/:id', async (request, response) => {
+    const civilite_id = parseInt(request.params.id);
+
+    await CiviliteService.update(civilite_id, request.body)
+
+    response.send("Civilite updated")
+})
+
+app.post('/civilite', async (request, response) => {
+    const id_civilite = request.body.id_civilite
+    const libelle = request.body.libelle
+
+    await CiviliteService.create(new Civilite(id_civilite, libelle))
+
+    response.send("Civilite created")
+})
+
+app.delete('/civilites/:id', async (request, response) => {
+    const civilite_id = parseInt(request.params.id);
+
+    await CiviliteService.delete(civilite_id)
+
+    response.send("Civilite deleted")
 })
 
 const server = app.listen(port, () => {

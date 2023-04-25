@@ -8,6 +8,10 @@ export class ContactService {
         return await contact_dao.findAll()
     }
 
+    static async findById(id: number) {
+        return await contact_dao.findById(id)
+    }
+
     static async create(contact: Contact) {
         await contact_dao.create(contact)
     }
@@ -15,10 +19,6 @@ export class ContactService {
     static async delete(id: number) {
         if (await this.findById(id) !== null)
             await contact_dao.delete(id)
-    }
-
-    static async findById(id: number) {
-        return await contact_dao.findById(id)
     }
 
     static async update(id: number, body: any) {

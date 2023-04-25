@@ -4,26 +4,6 @@ import {PrismaClient} from "@prisma/client";
 const prisma_client = new PrismaClient()
 
 export class ContactDao {
-    async create(contact: Contact) {
-        await prisma_client.contact.create({
-            data: {
-                id_contact: contact.id,
-                nom: contact.nom,
-                prenom: contact.prenom,
-                id_civilite: contact.id_civilite,
-                email: contact.email
-            }
-        })
-    }
-
-    async delete(id: number) {
-        await prisma_client.contact.delete({
-            where: {
-                id_contact: id,
-            }
-        })
-    }
-
     async findAll() {
         let contacts: Contact[] = []
 
@@ -60,6 +40,26 @@ export class ContactDao {
         }
 
         return null
+    }
+    
+    async create(contact: Contact) {
+        await prisma_client.contact.create({
+            data: {
+                id_contact: contact.id,
+                nom: contact.nom,
+                prenom: contact.prenom,
+                id_civilite: contact.id_civilite,
+                email: contact.email
+            }
+        })
+    }
+
+    async delete(id: number) {
+        await prisma_client.contact.delete({
+            where: {
+                id_contact: id,
+            }
+        })
     }
 
     async update(id: number, body: any) {
