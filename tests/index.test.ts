@@ -77,7 +77,7 @@ test("create contact", async () => {
     expect(response.status).toEqual(200)
 
     await ContactService.delete(5)
-    
+
     server.close()
 });
 
@@ -116,5 +116,8 @@ test("create civilite", async () => {
     });
     expect(response.text).toEqual("Civilite created");
     expect(response.status).toEqual(200)
+
+    await CiviliteService.delete(4)
+
     server.close()
 });
