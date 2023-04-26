@@ -70,7 +70,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:models\Civilite.ts
+SF:models\Title.ts
 FN:5,(anonymous_0)
 FNF:1
 FNH:1
@@ -101,7 +101,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:repositories\CiviliteDao.ts
+SF:repositories\TitleDao.ts
 FN:7,(anonymous_7)
 FNF:1
 FNH:1
@@ -169,7 +169,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:services\CiviliteService.ts
+SF:services\TitleService.ts
 FN:6,(anonymous_7)
 FNF:1
 FNH:1

@@ -2,27 +2,27 @@ import request from "supertest";
 import {Contact} from "../models/Contact";
 import {ContactService} from "../services/ContactService";
 import server from "../index";
-import {Civilite} from "../models/Civilite";
-import {CiviliteService} from "../services/CiviliteService";
+import {Title} from "../models/Title";
+import {TitleService} from "../services/TitleService";
 
 let contact1: Contact
 let contact2: Contact
 
-let civilite1: Civilite
-let civilite2: Civilite
-let civilite3: Civilite
+let title1: Title
+let title2: Title
+let title3: Title
 
 beforeEach(async () => {
     contact1 = new Contact(1, "DUPONT", "Jean", "dupontj@3il.fr", 1)
     contact2 = new Contact(2, "DUPONT", "Michel", "dupontm@3il.fr", 2)
 
-    civilite1 = new Civilite(1, "Mr")
-    civilite2 = new Civilite(2, "Mme")
-    civilite3 = new Civilite(3, "Mlle")
+    title1 = new Title(1, "Mr")
+    title2 = new Title(2, "Mme")
+    title3 = new Title(3, "Mlle")
 
-    await CiviliteService.create(civilite1)
-    await CiviliteService.create(civilite2)
-    await CiviliteService.create(civilite3)
+    await TitleService.create(title1)
+    await TitleService.create(title2)
+    await TitleService.create(title3)
 
     await ContactService.create(contact1)
     await ContactService.create(contact2)
@@ -32,9 +32,9 @@ afterEach(async () => {
     await ContactService.delete(1)
     await ContactService.delete(2)
 
-    await CiviliteService.delete(1)
-    await CiviliteService.delete(2)
-    await CiviliteService.delete(3)
+    await TitleService.delete(1)
+    await TitleService.delete(2)
+    await TitleService.delete(3)
 });
 
 test("get one contact", async () => {
@@ -81,43 +81,43 @@ test("create contact", async () => {
     server.close()
 });
 
-test("get one civilite", async () => {
-    const response = await request(server).get("/civilites/1");
-    expect(response.body).toEqual(civilite1);
+test("get one title", async () => {
+    const response = await request(server).get("/titles/1");
+    expect(response.body).toEqual(title1);
     expect(response.status).toEqual(200)
     server.close()
 });
 
-test("get all civilites", async () => {
-    const response = await request(server).get("/civilites");
-    expect(response.body).toEqual([civilite1, civilite2, civilite3]);
+test("get all titles", async () => {
+    const response = await request(server).get("/titles");
+    expect(response.body).toEqual([title1, title2, title3]);
     expect(response.status).toEqual(200)
     server.close()
 });
 
-test("update civilite", async () => {
-    const response = await request(server).put("/civilites/1");
-    expect(response.text).toEqual("Civilite updated");
+test("update title", async () => {
+    const response = await request(server).put("/titles/1");
+    expect(response.text).toEqual("Title updated");
     expect(response.status).toEqual(200)
     server.close()
 });
 
-test("delete civilite", async () => {
-    const response = await request(server).delete("/civilites/3");
-    expect(response.text).toEqual("Civilite deleted");
+test("delete title", async () => {
+    const response = await request(server).delete("/titles/3");
+    expect(response.text).toEqual("Title deleted");
     expect(response.status).toEqual(200)
     server.close()
 });
 
-test("create civilite", async () => {
-    const response = await request(server).post("/civilite").send({
+test("create title", async () => {
+    const response = await request(server).post("/title").send({
         id_civilite: 4,
         libelle: "test"
     });
-    expect(response.text).toEqual("Civilite created");
+    expect(response.text).toEqual("Title created");
     expect(response.status).toEqual(200)
 
-    await CiviliteService.delete(4)
+    await TitleService.delete(4)
 
     server.close()
 });

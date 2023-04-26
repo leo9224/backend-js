@@ -1,26 +1,26 @@
 import {ContactService} from "../services/ContactService";
 import {Contact} from "../models/Contact";
-import {Civilite} from "../models/Civilite";
-import {CiviliteService} from "../services/CiviliteService";
+import {Title} from "../models/Title";
+import {TitleService} from "../services/TitleService";
 
 let contact1: Contact
 let contact2: Contact
 
-let civilite1: Civilite
-let civilite2: Civilite
-let civilite3: Civilite
+let title1: Title
+let title2: Title
+let title3: Title
 
 beforeEach(async () => {
     contact1 = new Contact(1, "DUPONT", "Jean", "dupontj@3il.fr", 1)
     contact2 = new Contact(2, "DUPONT", "Michel", "dupontm@3il.fr", 2)
 
-    civilite1 = new Civilite(1, "Mr")
-    civilite2 = new Civilite(2, "Mme")
-    civilite3 = new Civilite(3, "Mlle")
+    title1 = new Title(1, "Mr")
+    title2 = new Title(2, "Mme")
+    title3 = new Title(3, "Mlle")
 
-    await CiviliteService.create(civilite1)
-    await CiviliteService.create(civilite2)
-    await CiviliteService.create(civilite3)
+    await TitleService.create(title1)
+    await TitleService.create(title2)
+    await TitleService.create(title3)
 
     await ContactService.create(contact1)
     await ContactService.create(contact2)
@@ -30,9 +30,9 @@ afterEach(async () => {
     await ContactService.delete(1)
     await ContactService.delete(2)
 
-    await CiviliteService.delete(1)
-    await CiviliteService.delete(2)
-    await CiviliteService.delete(3)
+    await TitleService.delete(1)
+    await TitleService.delete(2)
+    await TitleService.delete(3)
 });
 
 test('get contacts', async () => {
@@ -42,7 +42,7 @@ test('get contacts', async () => {
 
 test('update contact', async () => {
     await ContactService.update(2, {id_civilite: 1})
-    contact2.id_civilite = 1
+    contact2.title_id = 1
     expect(await ContactService.findById(2)).toEqual(contact2);
 });
 

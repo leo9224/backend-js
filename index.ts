@@ -2,8 +2,8 @@ import express = require('express')
 import body_parser = require('body-parser')
 import {Contact} from "./models/Contact";
 import {ContactService} from "./services/ContactService";
-import {CiviliteService} from "./services/CiviliteService";
-import {Civilite} from "./models/Civilite";
+import {TitleService} from "./services/TitleService";
+import {Title} from "./models/Title";
 
 const app = express()
 const port = process.env.API_PORT
@@ -41,9 +41,9 @@ app.post('/contact', async (request, response) => {
     const nom = request.body.nom
     const prenom = request.body.prenom
     const email = request.body.email
-    const id_civilite = request.body.id_civilite
+    const title_id = request.body.id_civilite
 
-    await ContactService.create(new Contact(id_contact, nom, prenom, email, id_civilite))
+    await ContactService.create(new Contact(id_contact, nom, prenom, email, title_id))
 
     response.send("Contact created")
 })
@@ -56,39 +56,39 @@ app.delete('/contacts/:id', async (request, response) => {
     response.send("Contact deleted")
 })
 
-app.get('/civilites', async (request, response) => {
-    response.send(await CiviliteService.findAll())
+app.get('/titles', async (request, response) => {
+    response.send(await TitleService.findAll())
 })
 
-app.get('/civilites/:id', async (request, response) => {
-    const civilite_id = parseInt(request.params.id);
+app.get('/titles/:id', async (request, response) => {
+    const title_id = parseInt(request.params.id);
 
-    response.send(await CiviliteService.findById(civilite_id))
+    response.send(await TitleService.findById(title_id))
 })
 
-app.put('/civilites/:id', async (request, response) => {
-    const civilite_id = parseInt(request.params.id);
+app.put('/titles/:id', async (request, response) => {
+    const title_id = parseInt(request.params.id);
 
-    await CiviliteService.update(civilite_id, request.body)
+    await TitleService.update(title_id, request.body)
 
-    response.send("Civilite updated")
+    response.send("Title updated")
 })
 
-app.post('/civilite', async (request, response) => {
-    const id_civilite = request.body.id_civilite
-    const libelle = request.body.libelle
+app.post('/title', async (request, response) => {
+    const title_id = request.body.id_civilite
+    const description = request.body.libelle
 
-    await CiviliteService.create(new Civilite(id_civilite, libelle))
+    await TitleService.create(new Title(title_id, description))
 
-    response.send("Civilite created")
+    response.send("Title created")
 })
 
-app.delete('/civilites/:id', async (request, response) => {
-    const civilite_id = parseInt(request.params.id);
+app.delete('/titles/:id', async (request, response) => {
+    const title_id = parseInt(request.params.id);
 
-    await CiviliteService.delete(civilite_id)
+    await TitleService.delete(title_id)
 
-    response.send("Civilite deleted")
+    response.send("Title deleted")
 })
 
 const server = app.listen(port, () => {

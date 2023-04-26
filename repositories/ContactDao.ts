@@ -11,12 +11,12 @@ export class ContactDao {
 
         for (let contact_json of contacts_json) {
             const id_contact = contact_json['id_contact']
-            const nom = contact_json['nom']
-            const prenom = contact_json['prenom']
+            const last_name = contact_json['nom']
+            const first_name = contact_json['prenom']
             const email = contact_json['email']
-            const id_civilite = contact_json['id_civilite']
+            const title_id = contact_json['id_civilite']
 
-            contacts.push(new Contact(id_contact, nom, prenom, email, id_civilite))
+            contacts.push(new Contact(id_contact, last_name, first_name, email, title_id))
         }
 
         return contacts;
@@ -31,24 +31,24 @@ export class ContactDao {
 
         if (contact_json !== null) {
             const id_contact = contact_json['id_contact']
-            const nom = contact_json['nom']
-            const prenom = contact_json['prenom']
+            const last_name = contact_json['nom']
+            const first_name = contact_json['prenom']
             const email = contact_json['email']
-            const id_civilite = contact_json['id_civilite']
+            const title_id = contact_json['id_civilite']
 
-            return new Contact(id_contact, nom, prenom, email, id_civilite);
+            return new Contact(id_contact, last_name, first_name, email, title_id);
         }
 
         return null
     }
-    
+
     async create(contact: Contact) {
         await prisma_client.contact.create({
             data: {
                 id_contact: contact.id,
-                nom: contact.nom,
-                prenom: contact.prenom,
-                id_civilite: contact.id_civilite,
+                nom: contact.last_name,
+                prenom: contact.first_name,
+                id_civilite: contact.title_id,
                 email: contact.email
             }
         })

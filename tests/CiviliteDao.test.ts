@@ -1,39 +1,39 @@
-import {Civilite} from "../models/Civilite";
-import {CiviliteService} from "../services/CiviliteService";
+import {Title} from "../models/Title";
+import {TitleService} from "../services/TitleService";
 
-let civilite1: Civilite
-let civilite2: Civilite
-let civilite3: Civilite
+let title1: Title
+let title2: Title
+let title3: Title
 
 beforeEach(async () => {
-    civilite1 = new Civilite(1, "Mr")
-    civilite2 = new Civilite(2, "Mme")
-    civilite3 = new Civilite(3, "Mlle")
+    title1 = new Title(1, "Mr")
+    title2 = new Title(2, "Mme")
+    title3 = new Title(3, "Mlle")
 
-    await CiviliteService.create(civilite1)
-    await CiviliteService.create(civilite2)
-    await CiviliteService.create(civilite3)
+    await TitleService.create(title1)
+    await TitleService.create(title2)
+    await TitleService.create(title3)
 });
 
 afterEach(async () => {
-    await CiviliteService.delete(1)
-    await CiviliteService.delete(2)
-    await CiviliteService.delete(3)
+    await TitleService.delete(1)
+    await TitleService.delete(2)
+    await TitleService.delete(3)
 });
 
-test('get civilites', async () => {
-    expect(await CiviliteService.findById(1)).toEqual(civilite1)
-    expect(await CiviliteService.findAll()).toEqual([civilite1, civilite2, civilite3])
+test('get titles', async () => {
+    expect(await TitleService.findById(1)).toEqual(title1)
+    expect(await TitleService.findAll()).toEqual([title1, title2, title3])
 });
 
-test('update civilite', async () => {
-    await CiviliteService.update(2, {libelle: "test"})
-    civilite2.libelle = "test"
-    expect(await CiviliteService.findById(2)).toEqual(civilite2);
+test('update title', async () => {
+    await TitleService.update(2, {libelle: "test"})
+    title2.description = "test"
+    expect(await TitleService.findById(2)).toEqual(title2);
 });
 
-test('delete civilite', async () => {
-    await CiviliteService.delete(1)
-    expect(await CiviliteService.findById(1)).toEqual(null);
-    expect(await CiviliteService.findAll()).toEqual([civilite2, civilite3])
+test('delete title', async () => {
+    await TitleService.delete(1)
+    expect(await TitleService.findById(1)).toEqual(null);
+    expect(await TitleService.findAll()).toEqual([title2, title3])
 });
