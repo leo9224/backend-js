@@ -274,15 +274,18 @@ app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 app.get("/contacts", (request, response) => __async(void 0, null, function* () {
   response.send(yield ContactService.findAll());
+  console.log("GET request /contacts");
 }));
 app.get("/contacts/:id", (request, response) => __async(void 0, null, function* () {
   const contact_id = parseInt(request.params.id);
   response.send(yield ContactService.findById(contact_id));
+  console.log("GET request /contacts/" + contact_id);
 }));
 app.put("/contacts/:id", (request, response) => __async(void 0, null, function* () {
   const contact_id = parseInt(request.params.id);
   yield ContactService.update(contact_id, request.body);
   response.send("Contact updated");
+  console.log("PUT request /contacts/" + contact_id);
 }));
 app.post("/contacts", (request, response) => __async(void 0, null, function* () {
   const contact_id = request.body.contact_id;
@@ -292,34 +295,41 @@ app.post("/contacts", (request, response) => __async(void 0, null, function* () 
   const title_id = request.body.title_id;
   yield ContactService.create(new Contact(contact_id, last_name, first_name, email, title_id));
   response.send("Contact created");
+  console.log("POST request /contacts");
 }));
 app.delete("/contacts/:id", (request, response) => __async(void 0, null, function* () {
   const contact_id = parseInt(request.params.id);
   yield ContactService.delete(contact_id);
   response.send("Contact deleted");
+  console.log("DELETE request /contacts/" + contact_id);
 }));
 app.get("/titles", (request, response) => __async(void 0, null, function* () {
   response.send(yield TitleService.findAll());
+  console.log("GET request /titles");
 }));
 app.get("/titles/:id", (request, response) => __async(void 0, null, function* () {
   const title_id = parseInt(request.params.id);
   response.send(yield TitleService.findById(title_id));
+  console.log("GET request /titles/" + title_id);
 }));
 app.put("/titles/:id", (request, response) => __async(void 0, null, function* () {
   const title_id = parseInt(request.params.id);
   yield TitleService.update(title_id, request.body);
   response.send("Title updated");
+  console.log("PUT request /titles/" + title_id);
 }));
 app.post("/titles", (request, response) => __async(void 0, null, function* () {
   const title_id = request.body.title_id;
   const description = request.body.description;
   yield TitleService.create(new Title(title_id, description));
   response.send("Title created");
+  console.log("POST request /titles");
 }));
 app.delete("/titles/:id", (request, response) => __async(void 0, null, function* () {
   const title_id = parseInt(request.params.id);
   yield TitleService.delete(title_id);
   response.send("Title deleted");
+  console.log("DELETE request /titles/" + title_id);
 }));
 var server = app.listen(port, () => {
   console.log(`API listening on port ${port}`);
