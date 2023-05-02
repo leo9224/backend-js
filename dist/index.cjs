@@ -64,11 +64,11 @@ var ContactDao = class {
       let contacts = [];
       const contacts_json = yield prisma_client.contact.findMany();
       for (let contact_json of contacts_json) {
-        const id_contact = contact_json["id_contact"];
-        const last_name = contact_json["nom"];
-        const first_name = contact_json["prenom"];
+        const id_contact = contact_json["contact_id"];
+        const last_name = contact_json["last_name"];
+        const first_name = contact_json["first_name"];
         const email = contact_json["email"];
-        const title_id = contact_json["id_civilite"];
+        const title_id = contact_json["title_id"];
         contacts.push(new Contact(id_contact, last_name, first_name, email, title_id));
       }
       return contacts;
@@ -78,15 +78,15 @@ var ContactDao = class {
     return __async(this, null, function* () {
       const contact_json = yield prisma_client.contact.findUnique({
         where: {
-          id_contact: id
+          contact_id: id
         }
       });
       if (contact_json !== null) {
-        const id_contact = contact_json["id_contact"];
-        const last_name = contact_json["nom"];
-        const first_name = contact_json["prenom"];
+        const id_contact = contact_json["contact_id"];
+        const last_name = contact_json["last_name"];
+        const first_name = contact_json["first_name"];
         const email = contact_json["email"];
-        const title_id = contact_json["id_civilite"];
+        const title_id = contact_json["title_id"];
         return new Contact(id_contact, last_name, first_name, email, title_id);
       }
       return null;
@@ -96,10 +96,10 @@ var ContactDao = class {
     return __async(this, null, function* () {
       yield prisma_client.contact.create({
         data: {
-          id_contact: contact.id,
-          nom: contact.last_name,
-          prenom: contact.first_name,
-          id_civilite: contact.title_id,
+          contact_id: contact.id,
+          last_name: contact.last_name,
+          first_name: contact.first_name,
+          title_id: contact.title_id,
           email: contact.email
         }
       });
@@ -109,7 +109,7 @@ var ContactDao = class {
     return __async(this, null, function* () {
       yield prisma_client.contact.delete({
         where: {
-          id_contact: id
+          contact_id: id
         }
       });
     });
@@ -118,7 +118,7 @@ var ContactDao = class {
     return __async(this, null, function* () {
       yield prisma_client.contact.update({
         where: {
-          id_contact: id
+          contact_id: id
         },
         data: body
       });
@@ -172,10 +172,10 @@ var TitleDao = class {
   findAll() {
     return __async(this, null, function* () {
       let titles = [];
-      const titles_json = yield prisma_client2.civilite.findMany();
+      const titles_json = yield prisma_client2.title.findMany();
       for (let title_json of titles_json) {
-        const title_id = title_json["id_civilite"];
-        const description = title_json["libelle"];
+        const title_id = title_json["title_id"];
+        const description = title_json["description"];
         titles.push(new Title(title_id, description));
       }
       return titles;
@@ -183,14 +183,14 @@ var TitleDao = class {
   }
   findById(id) {
     return __async(this, null, function* () {
-      const title_json = yield prisma_client2.civilite.findUnique({
+      const title_json = yield prisma_client2.title.findUnique({
         where: {
-          id_civilite: id
+          title_id: id
         }
       });
       if (title_json !== null) {
-        const title_id = title_json["id_civilite"];
-        const description = title_json["libelle"];
+        const title_id = title_json["title_id"];
+        const description = title_json["description"];
         return new Title(title_id, description);
       }
       return null;
@@ -198,28 +198,28 @@ var TitleDao = class {
   }
   create(title) {
     return __async(this, null, function* () {
-      yield prisma_client2.civilite.create({
+      yield prisma_client2.title.create({
         data: {
-          id_civilite: title.id,
-          libelle: title.description
+          title_id: title.id,
+          description: title.description
         }
       });
     });
   }
   delete(id) {
     return __async(this, null, function* () {
-      yield prisma_client2.civilite.delete({
+      yield prisma_client2.title.delete({
         where: {
-          id_civilite: id
+          title_id: id
         }
       });
     });
   }
   update(id, body) {
     return __async(this, null, function* () {
-      yield prisma_client2.civilite.update({
+      yield prisma_client2.title.update({
         where: {
-          id_civilite: id
+          title_id: id
         },
         data: body
       });
@@ -284,13 +284,13 @@ app.put("/contacts/:id", (request, response) => __async(void 0, null, function* 
   yield ContactService.update(contact_id, request.body);
   response.send("Contact updated");
 }));
-app.post("/contact", (request, response) => __async(void 0, null, function* () {
-  const id_contact = request.body.id_contact;
-  const nom = request.body.nom;
-  const prenom = request.body.prenom;
+app.post("/contacts", (request, response) => __async(void 0, null, function* () {
+  const contact_id = request.body.contact_id;
+  const last_name = request.body.last_name;
+  const first_name = request.body.first_name;
   const email = request.body.email;
-  const title_id = request.body.id_civilite;
-  yield ContactService.create(new Contact(id_contact, nom, prenom, email, title_id));
+  const title_id = request.body.title_id;
+  yield ContactService.create(new Contact(contact_id, last_name, first_name, email, title_id));
   response.send("Contact created");
 }));
 app.delete("/contacts/:id", (request, response) => __async(void 0, null, function* () {
@@ -310,9 +310,9 @@ app.put("/titles/:id", (request, response) => __async(void 0, null, function* ()
   yield TitleService.update(title_id, request.body);
   response.send("Title updated");
 }));
-app.post("/title", (request, response) => __async(void 0, null, function* () {
-  const title_id = request.body.id_civilite;
-  const description = request.body.libelle;
+app.post("/titles", (request, response) => __async(void 0, null, function* () {
+  const title_id = request.body.title_id;
+  const description = request.body.description;
   yield TitleService.create(new Title(title_id, description));
   response.send("Title created");
 }));

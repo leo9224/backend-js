@@ -10,11 +10,11 @@ export class ContactDao {
         const contacts_json = await prisma_client.contact.findMany()
 
         for (let contact_json of contacts_json) {
-            const id_contact = contact_json['id_contact']
-            const last_name = contact_json['nom']
-            const first_name = contact_json['prenom']
+            const id_contact = contact_json['contact_id']
+            const last_name = contact_json['last_name']
+            const first_name = contact_json['first_name']
             const email = contact_json['email']
-            const title_id = contact_json['id_civilite']
+            const title_id = contact_json['title_id']
 
             contacts.push(new Contact(id_contact, last_name, first_name, email, title_id))
         }
@@ -25,16 +25,16 @@ export class ContactDao {
     async findById(id: number) {
         const contact_json = await prisma_client.contact.findUnique({
             where: {
-                id_contact: id,
+                contact_id: id,
             }
         })
 
         if (contact_json !== null) {
-            const id_contact = contact_json['id_contact']
-            const last_name = contact_json['nom']
-            const first_name = contact_json['prenom']
+            const id_contact = contact_json['contact_id']
+            const last_name = contact_json['last_name']
+            const first_name = contact_json['first_name']
             const email = contact_json['email']
-            const title_id = contact_json['id_civilite']
+            const title_id = contact_json['title_id']
 
             return new Contact(id_contact, last_name, first_name, email, title_id);
         }
@@ -45,10 +45,10 @@ export class ContactDao {
     async create(contact: Contact) {
         await prisma_client.contact.create({
             data: {
-                id_contact: contact.id,
-                nom: contact.last_name,
-                prenom: contact.first_name,
-                id_civilite: contact.title_id,
+                contact_id: contact.id,
+                last_name: contact.last_name,
+                first_name: contact.first_name,
+                title_id: contact.title_id,
                 email: contact.email
             }
         })
@@ -57,7 +57,7 @@ export class ContactDao {
     async delete(id: number) {
         await prisma_client.contact.delete({
             where: {
-                id_contact: id,
+                contact_id: id,
             }
         })
     }
@@ -65,7 +65,7 @@ export class ContactDao {
     async update(id: number, body: any) {
         await prisma_client.contact.update({
             where: {
-                id_contact: id,
+                contact_id: id,
             },
             data: body,
         })

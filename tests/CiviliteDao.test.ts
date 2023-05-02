@@ -27,7 +27,7 @@ test('get titles', async () => {
 });
 
 test('update title', async () => {
-    await TitleService.update(2, {libelle: "test"})
+    await TitleService.update(2, {description: "test"})
     title2.description = "test"
     expect(await TitleService.findById(2)).toEqual(title2);
 });

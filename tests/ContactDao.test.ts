@@ -41,7 +41,7 @@ test('get contacts', async () => {
 });
 
 test('update contact', async () => {
-    await ContactService.update(2, {id_civilite: 1})
+    await ContactService.update(2, {title_id: 1})
     contact2.title_id = 1
     expect(await ContactService.findById(2)).toEqual(contact2);
 });

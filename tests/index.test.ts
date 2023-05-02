@@ -67,11 +67,11 @@ test("delete contact", async () => {
 
 test("create contact", async () => {
     const response = await request(server).post("/contact").send({
-        id_contact: 5,
-        nom: "FETTER",
-        prenom: "Léo",
+        contact_id: 5,
+        last_name: "FETTER",
+        first_name: "Léo",
         email: "fetterl@3il.fr",
-        id_civilite: 1
+        title_id: 1
     });
     expect(response.text).toEqual("Contact created");
     expect(response.status).toEqual(200)
@@ -111,8 +111,8 @@ test("delete title", async () => {
 
 test("create title", async () => {
     const response = await request(server).post("/title").send({
-        id_civilite: 4,
-        libelle: "test"
+        title_id: 4,
+        description: "test"
     });
     expect(response.text).toEqual("Title created");
     expect(response.status).toEqual(200)

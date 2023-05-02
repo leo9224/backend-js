@@ -36,14 +36,14 @@ app.put('/contacts/:id', async (request, response) => {
     response.send("Contact updated")
 })
 
-app.post('/contact', async (request, response) => {
-    const id_contact = request.body.id_contact
-    const nom = request.body.nom
-    const prenom = request.body.prenom
+app.post('/contacts', async (request, response) => {
+    const contact_id = request.body.contact_id
+    const last_name = request.body.last_name
+    const first_name = request.body.first_name
     const email = request.body.email
-    const title_id = request.body.id_civilite
+    const title_id = request.body.title_id
 
-    await ContactService.create(new Contact(id_contact, nom, prenom, email, title_id))
+    await ContactService.create(new Contact(contact_id, last_name, first_name, email, title_id))
 
     response.send("Contact created")
 })
@@ -74,9 +74,9 @@ app.put('/titles/:id', async (request, response) => {
     response.send("Title updated")
 })
 
-app.post('/title', async (request, response) => {
-    const title_id = request.body.id_civilite
-    const description = request.body.libelle
+app.post('/titles', async (request, response) => {
+    const title_id = request.body.title_id
+    const description = request.body.description
 
     await TitleService.create(new Title(title_id, description))
 

@@ -7,17 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model civilite {
-  id_civilite Int       @id(map: "civilite_pk")
-  libelle     String    @db.VarChar(10)
+model title {
+  title_id    Int       @id(map: "title_pk")
+  description String    @db.VarChar(10)
   contact     contact[]
 }
 
 model contact {
-  id_contact  Int      @id(map: "contact_pk")
-  nom         String   @db.VarChar(50)
-  prenom      String   @db.VarChar(50)
-  id_civilite Int
-  email       String   @db.VarChar(255)
-  civilite    civilite @relation(fields: [id_civilite], references: [id_civilite], onDelete: NoAction, onUpdate: NoAction, map: "contact_civilite_fk")
+  contact_id Int    @id(map: "contact_pk")
+  last_name  String @db.VarChar(50)
+  first_name String @db.VarChar(50)
+  title_id   Int
+  email      String @db.VarChar(255)
+  title      title  @relation(fields: [title_id], references: [title_id], onDelete: NoAction, onUpdate: NoAction, map: "contact_title_fk")
 }

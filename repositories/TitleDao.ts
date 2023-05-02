@@ -7,11 +7,11 @@ export class TitleDao {
     async findAll() {
         let titles: Title[] = []
 
-        const titles_json = await prisma_client.civilite.findMany()
+        const titles_json = await prisma_client.title.findMany()
 
         for (let title_json of titles_json) {
-            const title_id = title_json['id_civilite']
-            const description = title_json['libelle']
+            const title_id = title_json['title_id']
+            const description = title_json['description']
 
             titles.push(new Title(title_id, description))
         }
@@ -20,15 +20,15 @@ export class TitleDao {
     }
 
     async findById(id: number) {
-        const title_json = await prisma_client.civilite.findUnique({
+        const title_json = await prisma_client.title.findUnique({
             where: {
-                id_civilite: id,
+                title_id: id,
             }
         })
 
         if (title_json !== null) {
-            const title_id = title_json['id_civilite']
-            const description = title_json['libelle']
+            const title_id = title_json['title_id']
+            const description = title_json['description']
 
             return new Title(title_id, description);
         }
@@ -37,26 +37,26 @@ export class TitleDao {
     }
 
     async create(title: Title) {
-        await prisma_client.civilite.create({
+        await prisma_client.title.create({
             data: {
-                id_civilite: title.id,
-                libelle: title.description
+                title_id: title.id,
+                description: title.description
             }
         })
     }
 
     async delete(id: number) {
-        await prisma_client.civilite.delete({
+        await prisma_client.title.delete({
             where: {
-                id_civilite: id,
+                title_id: id,
             }
         })
     }
 
     async update(id: number, body: any) {
-        await prisma_client.civilite.update({
+        await prisma_client.title.update({
             where: {
-                id_civilite: id,
+                title_id: id,
             },
             data: body,
         })
